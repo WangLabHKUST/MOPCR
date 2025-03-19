@@ -2,10 +2,9 @@
 
 The online predictor can be accessed at: http://www.wang-lab-hkust.com:8050.
 Please follow these steps to use the web application:
-1. Choose the HER2 status and ER status
-2. Upload all data, wait until uploading finish.
-3. Click "GET PREDICTION", and you will get prediction in a CSV (comma-separated values) file.
-4. Adjust the cutoff to find a best binary prediction.
+1. Upload all data, wait until uploading finish.
+2. Click "GET PREDICTION", and you will get prediction in a CSV (comma-separated values) file.
+3. Adjust the cutoff to find a best binary prediction.
 
 Reminders:
 1. Please use **CSV (comma-separated values)** file for all tables.
@@ -13,13 +12,19 @@ Reminders:
 
 ## Clinical dataset
 
-Please include T, N, KI67 in columns of the clinical table. If you don't have the information, please leave blank in the cell.
+Please include HER2, ER, T, N, KI67 and G3 in columns of the clinical table. If you don't have the information, please leave blank in the cell.
+
+HER2: HER2 status, please enter 0 for negative or 1 for positive.
+
+ER: ER status, please enter 0 for negative or 1 for positive.
 
 T: Primary tumor grade, please fill 0 for T1 and T2, and 1 for T3 and T4.
 
 N: whether nearby lymph nodes have cancer or not. 0 for no and 1 for yes.
 
 KI67: KI67 index, please enter values ranged from 0 to 1.
+
+G3: Primary tumor grade, please enter 0 for tumor grade T1/T2/T4 or 1 for tumor grade T3.
 
 If you have survival data (e.g., disease-free survival), you can also include them in the table:
 
@@ -29,11 +34,11 @@ MONTHS: time to event, float.
 
 Example:
 
-| Patient | T | N | KI67 | STATUS | MONTHS |... |
-| --- | --- | --- | --- | --- | --- | --- |
-| PS1 | 1 | 0 | 0.5 | 0 | 70.5 | ... |
-| PS2 | 0 | 1 |  | 1 | 60 | ... |
-| ... | ... | ... | ... | ... | ... | ... |
+| Patient | HER2 | ER | T | N | KI67 | G3 | STATUS | MONTHS |... |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| PS1 | 0 | 0 | 1 | 0 | 0.5 | 0 | 0 | 70.5 | ... |
+| PS2 | 1 | 0 | 0 | 1 |  | 1 | 1 | 60 | ... |
+| ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
 
 
 ## Methylation Dataset
@@ -42,7 +47,7 @@ Please enter the methylation levels for global and each gene, range:[0,1].
 
 Example:
 
-| Patient | global | TP53 | BRCA1 | ... |
+| Patient | MAP4K1 | KIT | CDKN2A | ... |
 | --- | --- | --- | --- | --- |
 | PS1 | 0.2 | 0.3 | 0.5 | ... |
 | PS2 | 0.1 | 1 | 0.75 | ... |
